@@ -49,7 +49,7 @@ from petkitaio.constants import (
     W5_SETTINGS_COMMANDS,
 )
 from petkitaio.exceptions import (AuthError, BluetoothError, PetKitError, RegionError, ServerError, TimezoneError)
-from petkitaio.model import (Feeder, LitterBox, Pet, PetKitData, Purifier, W5Fountain)
+from petkitaio.model import (Feeder, FeederEstimation, LitterBox, Pet, PetKitData, Purifier, W5Fountain)
 
 LOGGER = logging.getLogger(__name__)
 
@@ -321,6 +321,7 @@ class PetKitClient:
                     feeders_data[feeder_data['result']['id']] = Feeder(
                         id=feeder_data['result']['id'],
                         data=feeder_data['result'],
+                        feeder_estimation=FeederEstimation(),
                         type=device['type'].lower(),
                         sound_list=sound_list,
                         last_manual_feed_id=last_manual_feed_id

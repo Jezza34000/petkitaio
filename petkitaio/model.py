@@ -23,10 +23,25 @@ class Feeder:
 
     id: int
     data: dict[str, Any]
+    feeder_estimation: FeederEstimation
     type: str
     sound_list: Optional[dict[int, str]] = None
     last_manual_feed_id: Optional[str] = None
 
+
+@dataclass
+class FeederEstimation:
+    """Dataclass for PetKit Feeder Estimations."""
+
+    weight_hopper_1: int = 0
+    weight_hopper_2: int = 0
+    portion_counter_hopper_1: int = 0
+    portion_counter_hopper_2: int = 0
+    portion_weight_hopper_1: float = 0.0
+    portion_weight_hopper_2: float = 0.0
+    daily_planned_hopper_1: int = 0
+    daily_planned_hopper_2: int = 0
+    merged_hopper: bool = False
 
 @dataclass
 class LitterBox:
